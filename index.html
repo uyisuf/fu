@@ -19,7 +19,7 @@
             position: relative;
         }
 
-        /* 新增星空背景 */
+        /* 星空背景 */
         .star {
             position: absolute;
             width: 2px;
@@ -99,10 +99,18 @@
             z-index: 3;
         }
 
-        /* 新增漂浮动画 */
-        @keyframes float {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, -20px); }
+        /* 摇头动画 */
+        @keyframes headShake {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(0); }
+            75% { transform: rotate(-10deg); }
+        }
+
+        /* 眨眼动画 */
+        @keyframes blink {
+            0%, 100% { height: 10px; opacity: 1; }
+            50% { height: 2px; opacity: 0.5; }
         }
 
         .eye {
@@ -148,7 +156,7 @@
             100% { transform: translateY(-100vh); }
         }
 
-        /* 新增3D旋转彩带 */
+        /* 3D旋转彩带 */
         .ribbon {
             position: absolute;
             font-size: 40px;
@@ -177,11 +185,15 @@
         </div>
     </div>
 
-    <div class="message">🎉 生日快乐！牛气冲天！ 🎂</div>
+    <div class="message">🎉 生日快乐，牛牛哞哞！ 🎂</div>
 
-    <!-- 自动生成装饰元素 -->
+    <!-- 自动播放音乐和声音 -->
     <audio id="bg-music" loop>
         <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-308.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="moo-sound" loop>
+        <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/mpeg">
     </audio>
 
     <script>
@@ -210,10 +222,12 @@
             }
         }
 
-        // 音乐自动播放处理
+        // 音乐和哞哞声自动播放
         document.addEventListener('click', () => {
             const audio = document.getElementById('bg-music');
             audio.play().catch(() => console.log('播放需要用户交互'));
+            const mooSound = document.getElementById('moo-sound');
+            mooSound.play().catch(() => console.log('播放哞哞声需要用户交互'));
         }, { once: true });
 
         // 初始化
