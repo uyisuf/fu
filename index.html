@@ -133,11 +133,17 @@
     </audio>
 
     <script>
-        // 让音乐适配微信自动播放
-        document.addEventListener('WeixinJSBridgeReady', function () {
-            document.getElementById('bg-music').play();
-            document.getElementById('moo-sound').play();
-        });
-    </script>
+    // 适配微信自动播放
+    document.addEventListener('WeixinJSBridgeReady', function () {
+        document.getElementById('bg-music').play();
+        document.getElementById('moo-sound').play();
+    });
+
+    // 兼容某些浏览器自动播放策略
+    window.addEventListener('load', function () {
+        document.getElementById('bg-music').play();
+        document.getElementById('moo-sound').play();
+    });
+</script>
 </body>
 </html>
