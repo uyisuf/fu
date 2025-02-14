@@ -27,7 +27,7 @@
 
         .container {
             position: absolute;
-            top: 45%;
+            top: 48%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
@@ -42,7 +42,7 @@
         .emoji {
             font-size: 120px;
             position: absolute;
-            bottom: 80px;
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             animation: headShake 0.8s infinite alternate ease-in-out, blink 2s infinite;
@@ -76,12 +76,12 @@
         }
 
         .poem {
-            font-size: 22px;
+            font-size: 24px;
             color: #ffffff;
             position: absolute;
-            top: 10%;
+            top: 8%;
             width: 100%;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
 
         .decorations {
@@ -120,6 +120,37 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* 泡泡效果 */
+        .bubble {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: bubbleUp 4s infinite ease-in-out;
+        }
+
+        @keyframes bubbleUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        /* 海浪效果 */
+        .wave {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: url('https://i.imgur.com/boXG4zk.png') repeat-x;
+            animation: waveMove 4s linear infinite;
+        }
+
+        @keyframes waveMove {
+            0% { background-position: 0; }
+            100% { background-position: 100px; }
+        }
+
     </style>
 </head>
 <body>
@@ -138,20 +169,21 @@
     <div class="message">🎵 生日快乐！ 🎶</div>
 
     <!-- 背景音乐 -->
-    <audio id="bg-music" autoplay loop muted>
+    <audio autoplay loop>
         <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-308.mp3" type="audio/mpeg">
     </audio>
 
     <!-- 牛哞哞叫声 -->
-    <audio id="moo-sound" autoplay loop muted>
+    <audio autoplay loop>
         <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
     </audio>
+
+    <div class="wave"></div>
 
     <script>
         // 让音乐适配微信自动播放
         document.addEventListener('WeixinJSBridgeReady', function () {
-            document.getElementById('bg-music').play();
-            document.getElementById('moo-sound').play();
+            document.querySelectorAll('audio').forEach(audio => audio.play());
         });
 
         // 生成气球
@@ -178,10 +210,22 @@
             }
         }
 
+        // 生成泡泡
+        function createBubbles() {
+            for(let i = 0; i < 10; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = `${Math.random() * 100}vw`;
+                bubble.style.animationDuration = `${2 + Math.random() * 4}s`;
+                document.body.appendChild(bubble);
+            }
+        }
+
         window.onload = () => {
             createBalloons();
             createRibbons();
+            createBubbles();
         }
     </script>
 </body>
-</html
+</html>
