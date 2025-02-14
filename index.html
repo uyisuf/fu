@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>春江水 - 生日祝福</title>
+    <title>🎉 生日快乐，牛牛哞哞！ 🎂</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=ZCOOL+KuaiLe&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
 
         body {
             text-align: center;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(45deg, #ffe4e1, #d8bfd8, #b0e0e6);
+            font-family: 'ZCOOL KuaiLe', sans-serif;
+            background: linear-gradient(45deg, #ffb6c1, #87cefa, #ffd700);
             background-size: 400% 400%;
             animation: gradientBG 12s infinite alternate;
             overflow: hidden;
@@ -22,19 +22,19 @@
         @keyframes gradientBG {
             0% { background: #ffb6c1; }
             50% { background: #87cefa; }
-            100% { background: #98fb98; }
+            100% { background: #ffd700; }
         }
 
         .container {
             position: absolute;
-            top: 40%;
+            top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
         }
 
         .cake {
-            font-size: 200px;
+            font-size: 180px;
             position: relative;
             filter: drop-shadow(0 0 10px pink);
         }
@@ -42,128 +42,145 @@
         .emoji {
             font-size: 120px;
             position: absolute;
-            bottom: 100px;
+            bottom: 80px;
             left: 50%;
             transform: translateX(-50%);
-            animation: headShake 1s infinite, float 3s ease-in-out infinite;
+            animation: headShake 0.8s infinite alternate ease-in-out, blink 2s infinite;
             z-index: 3;
         }
 
         @keyframes headShake {
-            0%, 100% { transform: translateX(-50%) rotate(0); }
-            25% { transform: translateX(-50%) rotate(20deg); }
-            50% { transform: translateX(-50%) rotate(0); }
-            75% { transform: translateX(-50%) rotate(-20deg); }
+            0% { transform: translateX(-50%) rotate(0); }
+            50% { transform: translateX(-50%) rotate(30deg); }
+            100% { transform: translateX(-50%) rotate(-30deg); }
+        }
+
+        @keyframes blink {
+            0%, 100% { content: "🐮"; }
+            50% { content: "🐮"; }
+            25%, 75% { content: "🐂"; } /* 眨眼效果 */
+        }
+
+        .emoji::before {
+            content: "🐮";
+            display: inline-block;
         }
 
         .message {
-            font-size: 32px;
-            color: #ff69b4;
+            font-size: 28px;
+            color: #ff4500;
             position: absolute;
-            bottom: 15%;
+            bottom: 10%;
             width: 100%;
-            font-family: 'Pacifico', cursive;
-            animation: rainbow 2s infinite;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        @keyframes rainbow {
-            0% { color: #ff69b4; }
-            50% { color: #ffdd00; }
-            100% { color: #ff69b4; }
-        }
-
-        /* 添加流星特效 */
-        .meteor {
+        .poem {
+            font-size: 22px;
+            color: #ffffff;
             position: absolute;
-            width: 5px;
-            height: 5px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.7;
-            animation: meteorShower 3s linear infinite;
+            top: 10%;
+            width: 100%;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
         }
 
-        @keyframes meteorShower {
-            0% { transform: translate(-100vw, -100vh) scale(0); opacity: 1; }
-            100% { transform: translate(100vw, 100vh) scale(1.5); opacity: 0; }
-        }
-
-        /* 添加泡泡动画 */
-        .bubble {
+        .decorations {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: floatBubble 6s infinite ease-in-out;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
         }
 
-        @keyframes floatBubble {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+        /* 气球飘动 */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: red;
+            border-radius: 50%;
+            animation: floatUp 5s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
             50% { opacity: 0.8; }
             100% { transform: translateY(-50vh) scale(1.2); opacity: 0; }
+        }
+
+        /* 彩带动画 */
+        .ribbon {
+            position: absolute;
+            font-size: 50px;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0); }
+            100% { transform: rotate(360deg); }
         }
 
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="cake">🎂</div>
-        <div class="emoji" id="cow">🐮</div>
+    <div class="decorations">🎈🎉🎊✨🎁</div>
+
+    <div class="poem">
+        山歌好比春江水，<br>
+        牛牛到底姓名谁？
     </div>
 
-    <div class="message">🎉 生日快乐，牛牛哞哞！ 🎂</div>
+    <div class="container">
+        <div class="cake">🎂</div>
+        <div class="emoji" id="cow"></div>
+    </div>
 
-    <audio id="bg-music" loop>
+    <div class="message">🎵 生日快乐！ 🎶</div>
+
+    <!-- 背景音乐 -->
+    <audio id="bg-music" autoplay loop muted>
         <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-308.mp3" type="audio/mpeg">
     </audio>
 
-    <audio id="moo-sound" loop>
-        <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/mpeg">
+    <!-- 牛哞哞叫声 -->
+    <audio id="moo-sound" autoplay loop muted>
+        <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
     </audio>
 
     <script>
-        // 生成流星
-        function createMeteors() {
-            for(let i = 0; i < 5; i++) {
-                const meteor = document.createElement('div');
-                meteor.className = 'meteor';
-                meteor.style.left = `${Math.random() * 100}vw`;
-                meteor.style.top = `${Math.random() * 100}vh`;
-                meteor.style.animationDuration = `${2 + Math.random() * 3}s`;
-                meteor.style.animationDelay = `${Math.random() * 3}s`;
-                document.body.appendChild(meteor);
+        // 让音乐适配微信自动播放
+        document.addEventListener('WeixinJSBridgeReady', function () {
+            document.getElementById('bg-music').play();
+            document.getElementById('moo-sound').play();
+        });
+
+        // 生成气球
+        function createBalloons() {
+            for(let i = 0; i < 8; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = `${Math.random() * 100}vw`;
+                balloon.style.animationDuration = `${3 + Math.random() * 5}s`;
+                document.body.appendChild(balloon);
             }
         }
 
-        // 生成泡泡
-        function createBubbles() {
-            for(let i = 0; i < 10; i++) {
-                const bubble = document.createElement('div');
-                bubble.className = 'bubble';
-                bubble.style.left = `${Math.random() * 100}vw`;
-                bubble.style.bottom = `0`;
-                bubble.style.width = `${10 + Math.random() * 30}px`;
-                bubble.style.height = bubble.style.width;
-                bubble.style.animationDuration = `${3 + Math.random() * 5}s`;
-                bubble.style.animationDelay = `${Math.random() * 3}s`;
-                document.body.appendChild(bubble);
+        // 生成彩带
+        function createRibbons() {
+            for(let i = 0; i < 6; i++) {
+                const ribbon = document.createElement('div');
+                ribbon.className = 'ribbon';
+                ribbon.innerHTML = '🎀';
+                ribbon.style.left = `${Math.random() * 100}vw`;
+                ribbon.style.top = `${Math.random() * 50}vh`;
+                ribbon.style.animationDuration = `${2 + Math.random() * 4}s`;
+                document.body.appendChild(ribbon);
             }
         }
-
-        // 播放音乐
-        document.addEventListener('click', () => {
-            const audio = document.getElementById('bg-music');
-            audio.play().catch(() => console.log('播放需要用户交互'));
-            const mooSound = document.getElementById('moo-sound');
-            mooSound.play().catch(() => console.log('播放哞哞声需要用户交互'));
-        }, { once: true });
 
         window.onload = () => {
-            createMeteors();
-            createBubbles();
-            alert("点击任意位置开始播放音乐！");
+            createBalloons();
+            createRibbons();
         }
     </script>
 </body>
