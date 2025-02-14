@@ -67,26 +67,14 @@
         }
 
         .message {
-        font-size: 30px;
-        color: #ff4500;
-        position: absolute;
-        bottom: 5%;
-        width: 100%;
-        z-index: 20; /* 确保不会被挡住 */
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
-        animation: colorChange 3s infinite alternate, bounce 1.5s infinite ease-in-out;
-    }
-
-    @keyframes colorChange {
-        0% { color: #ff4500; }
-        50% { color: #ff1493; } /* 粉色 */
-        100% { color: #ffd700; } /* 金色 */
-    }
-
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); } /* 文字轻微跳跃 */
-    }
+            font-size: 28px;
+            color: #ff4500;
+            position: absolute;
+            bottom: 5%;
+            width: 100%;
+            z-index: 10; /* 确保不会被挡住 */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
         .poem {
             font-size: 22px;
@@ -120,30 +108,24 @@
         <div class="emoji" id="cow"></div>
     </div>
 
-   <div class="message">🎉 生日快乐牛牛哞哞！ 🎶</div>
+    <div class="message">🎵 生日快乐！ 牛牛哞哞 🎶</div>
 
     <!-- 背景音乐 -->
     <audio id="bg-music" autoplay loop>
-        <source src="https://raw.githubusercontent.com/uyisuf/fu/main/轻松愉快的氛围曲-开心活泼-祝你生日快乐（古典版）_爱给网_aigei_com.mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/你的GitHub用户名/你的仓库名/main/你的生日快乐音乐文件.mp3" type="audio/mpeg">
     </audio>
 
     <!-- 牛哞哞叫声 -->
     <audio id="moo-sound" autoplay loop>
-        <source src="https://raw.githubusercontent.com/uyisuf/fu/main/牛哞哞叫的声音_爱给网_aigei_com.mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/你的GitHub用户名/你的仓库名/main/你的牛哞哞音效.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-    // 适配微信自动播放
-    document.addEventListener('WeixinJSBridgeReady', function () {
-        document.getElementById('bg-music').play();
-        document.getElementById('moo-sound').play();
-    });
-
-    // 兼容某些浏览器自动播放策略
-    window.addEventListener('load', function () {
-        document.getElementById('bg-music').play();
-        document.getElementById('moo-sound').play();
-    });
-</script>
+        // 让音乐适配微信自动播放
+        document.addEventListener('WeixinJSBridgeReady', function () {
+            document.getElementById('bg-music').play();
+            document.getElementById('moo-sound').play();
+        });
+    </script>
 </body>
 </html>
