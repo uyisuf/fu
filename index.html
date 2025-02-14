@@ -70,8 +70,9 @@
             font-size: 28px;
             color: #ff4500;
             position: absolute;
-            bottom: 10%;
+            bottom: 5%;
             width: 100%;
+            z-index: 10; /* 确保不会被挡住 */
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
@@ -92,34 +93,6 @@
             font-size: 60px;
         }
 
-        /* 气球飘动 */
-        .balloon {
-            position: absolute;
-            width: 50px;
-            height: 70px;
-            background: red;
-            border-radius: 50%;
-            animation: floatUp 5s infinite ease-in-out;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.8); opacity: 1; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-50vh) scale(1.2); opacity: 0; }
-        }
-
-        /* 彩带动画 */
-        .ribbon {
-            position: absolute;
-            font-size: 50px;
-            animation: spin 3s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0); }
-            100% { transform: rotate(360deg); }
-        }
-
     </style>
 </head>
 <body>
@@ -135,16 +108,16 @@
         <div class="emoji" id="cow"></div>
     </div>
 
-    <div class="message">🎵 生日快乐！ 🎶</div>
+    <div class="message">🎵 生日快乐！ 牛牛哞哞 🎶</div>
 
     <!-- 背景音乐 -->
     <audio id="bg-music" autoplay loop>
-        <source src="https://www.myinstants.com/media/sounds/happy-birthday-to-you.mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/uyisuf/fu/main/轻松愉快的氛围曲-开心活泼-祝你生日快乐（古典版）_爱给网_aigei_com.mp3"" type="audio/mpeg">
     </audio>
 
     <!-- 牛哞哞叫声 -->
     <audio id="moo-sound" autoplay loop>
-        <source src="https://www.myinstants.com/media/sounds/cow-moo.mp3" type="audio/mpeg">
+        <source src="https://raw.githubusercontent.com/uyisuf/uf/main/牛哞哞叫的声音_爱给网_aigei_com.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -153,35 +126,6 @@
             document.getElementById('bg-music').play();
             document.getElementById('moo-sound').play();
         });
-
-        // 生成气球
-        function createBalloons() {
-            for(let i = 0; i < 8; i++) {
-                const balloon = document.createElement('div');
-                balloon.className = 'balloon';
-                balloon.style.left = `${Math.random() * 100}vw`;
-                balloon.style.animationDuration = `${3 + Math.random() * 5}s`;
-                document.body.appendChild(balloon);
-            }
-        }
-
-        // 生成彩带
-        function createRibbons() {
-            for(let i = 0; i < 6; i++) {
-                const ribbon = document.createElement('div');
-                ribbon.className = 'ribbon';
-                ribbon.innerHTML = '🎀';
-                ribbon.style.left = `${Math.random() * 100}vw`;
-                ribbon.style.top = `${Math.random() * 50}vh`;
-                ribbon.style.animationDuration = `${2 + Math.random() * 4}s`;
-                document.body.appendChild(ribbon);
-            }
-        }
-
-        window.onload = () => {
-            createBalloons();
-            createRibbons();
-        }
     </script>
 </body>
 </html>
